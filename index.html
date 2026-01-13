@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Manav Khatana's Website | HTML CSS JS Playground</title>
+
+<style>
+:root{
+  --bg:#020617;
+  --panel:#020617cc;
+  --border:#1e293b;
+  --accent:#38bdf8;
+  --green:#22c55e;
+}
+
+*{
+  box-sizing:border-box;
+  font-family:"Segoe UI", sans-serif;
+}
+
+body{
+  margin:0;
+  background:linear-gradient(135deg,#020617,#020617);
+  color:white;
+}
+
+/* HEADER */
+header{
+  padding:14px;
+  text-align:center;
+  background:#020617;
+  border-bottom:1px solid var(--border);
+}
+
+header h1{
+  margin:0;
+  font-size:22px;
+}
+
+header p{
+  margin:4px 0 0;
+  font-size:13px;
+  color:#94a3b8;
+}
+
+/* LAYOUT */
+.container{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  height:calc(100vh - 100px);
+}
+
+/* LEFT PANEL */
+.editor{
+  padding:12px;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+
+.block{
+  background:var(--panel);
+  border:1px solid var(--border);
+  border-radius:14px;
+  overflow:hidden;
+}
+
+.block-title{
+  padding:8px 12px;
+  font-size:14px;
+  background:#020617;
+  border-bottom:1px solid var(--border);
+  color:var(--accent);
+  font-weight:600;
+}
+
+textarea{
+  width:100%;
+  height:120px;
+  background:transparent;
+  color:#22c55e;
+  border:none;
+  padding:10px;
+  resize:none;
+  outline:none;
+  font-family:monospace;
+  font-size:14px;
+}
+
+button{
+  padding:12px;
+  border:none;
+  border-radius:14px;
+  font-size:16px;
+  font-weight:700;
+  cursor:pointer;
+  background:linear-gradient(135deg,#22c55e,#4ade80);
+  color:black;
+}
+
+/* RIGHT PANEL */
+.preview{
+  padding:12px;
+  background:#020617;
+  border-left:1px solid var(--border);
+}
+
+iframe{
+  width:100%;
+  height:100%;
+  border-radius:16px;
+  border:1px solid var(--border);
+  background:white;
+}
+
+/* FOOTER */
+footer{
+  text-align:center;
+  padding:8px;
+  font-size:12px;
+  color:#64748b;
+  border-top:1px solid var(--border);
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>🔥 Manav Khatana’s Website</h1>
+  <p>Learn HTML • CSS • JavaScript by Practice, not Theory</p>
+</header>
+
+<div class="container">
+
+  <!-- LEFT SIDE -->
+  <div class="editor">
+
+    <div class="block">
+      <div class="block-title">HTML</div>
+      <textarea id="html">
+<h1>Hello World</h1>
+<p>Click the heading</p>
+      </textarea>
+    </div>
+
+    <div class="block">
+      <div class="block-title">CSS</div>
+      <textarea id="css">
+body{
+  background:black;
+  color:#22c55e;
+  text-align:center;
+}
+h1{
+  cursor:pointer;
+}
+      </textarea>
+    </div>
+
+    <div class="block">
+      <div class="block-title">JavaScript</div>
+      <textarea id="js">
+document.querySelector("h1").onclick = () => {
+  alert("🔥 JavaScript is Working!");
+};
+      </textarea>
+    </div>
+
+    <button onclick="runCode()">▶ Run Code</button>
+
+  </div>
+
+  <!-- RIGHT SIDE -->
+  <div class="preview">
+    <iframe id="output"></iframe>
+  </div>
+
+</div>
+
+<footer>
+  © 2026 Manav Khatana • Built with HTML, CSS & JavaScript
+</footer>
+
+<script>
+function runCode(){
+  const html = document.getElementById("html").value;
+  const css = "<style>" + document.getElementById("css").value + "</style>";
+  const js  = "<script>" + document.getElementById("js").value + "<\/script>";
+  document.getElementById("output").srcdoc = html + css + js;
+}
+</script>
+
+</body>
+</html>
